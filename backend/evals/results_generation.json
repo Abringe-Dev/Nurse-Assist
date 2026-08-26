@@ -1,0 +1,490 @@
+{
+  "count": 24,
+  "judge_model": "openai/gpt-oss-120b",
+  "avg_faithfulness": 4.58,
+  "avg_relevance": 4.79,
+  "citation_rate": 0.96,
+  "heuristic_citation_rate": 1.0,
+  "rows": [
+    {
+      "id": "q01",
+      "question": "How long should you rub hands with alcohol-based hand rub?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "Rub the alcohol‑based hand rub over all hand surfaces until the product is completely dry – this typically takes about **20–30 seconds**【1】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer matches the expected response exactly, stating to rub until dry (~20‑30 s), and includes a citation.",
+        "raw": "{\n  \"faithfulness\": 5,\n  \"relevance\": 5,\n  \"citation_present\": 1,\n  \"reason\": \"The answer matches the expected response exactly, stating to rub until dry (~20‑30 s), and includes a citation.\"\n}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q02",
+      "question": "How long does handwashing with soap and water take?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "Handwashing with soap and water should be performed for **at least 40–60 seconds** total. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the expected answer and includes a citation, directly addressing the question.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer exactly matches the expected answer and includes a citation, directly addressing the question.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q03",
+      "question": "What are the five moments for hand hygiene?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**The Five Moments for Hand Hygiene**\n\n1. Before touching a patient  \n2. Before clean or aseptic procedures  \n3. After body fluid exposure risk  \n4. After touching a patient  \n5. After touching the patient’s surroundings  \n\nSource: [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the five hand‑hygiene moments and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer exactly matches the five hand‑hygiene moments and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q04",
+      "question": "When should you use soap and water instead of alcohol-based hand rub?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Use soap and water instead of alcohol‑based hand rub when:**\n\n- Hands are visibly soiled.  \n- After caring for patients with **Clostridioides difficile** or **norovirus** (the spores are not reliably killed by alcohol).  \n- Before eating.  \n\nThese situations are specified in the hand‑hygiene protocol and infection‑control guidance【2†L13-L19】【1†L9-L12】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the expected points and includes citations, fully addressing the question.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer exactly matches the expected points and includes citations, fully addressing the question.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q05",
+      "question": "What is the guidance for fingernails for clinical staff?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md",
+        "infection_control.md"
+      ],
+      "answer": "**Guidance for fingernails (clinical staff)**  \n\n- Keep fingernails short, with tips less than 0.5 cm.  \n- Artificial nails and nail extenders are **prohibited** for staff providing direct patient care.  \n- Rings are allowed only if they are a plain band during clinical duties.  \n\n**Source:** [1]",
+      "judge": {
+        "faithfulness": 4,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer correctly includes the key points (short nails <0.5 cm and no artificial nails/extenders) matching the expected guidance, but adds an extra statement about rings that is not in the referenc",
+        "raw": "{\"faithfulness\": 4, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer correctly includes the key points (short nails <0.5 cm and no artificial nails/extenders) matching the expected guidance, but adds an extra statement about rings that is not in the reference, indicating a slight deviation from strict faithfulness.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q06",
+      "question": "Does wearing gloves replace the need for hand hygiene?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**No.** Wearing gloves does **not** replace hand hygiene. The protocol states that gloves are not a substitute for hand hygiene and that hand hygiene should be performed immediately after glove removal【1】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "Answer matches expected response, directly addresses question, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"Answer matches expected response, directly addresses question, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q07",
+      "question": "How much alcohol-based hand rub should be applied?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "Apply a palm‑full of alcohol‑based hand rub (and follow the product label for the exact volume)【1】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer matches the expected palmful amount, adds no contradictory info, directly answers the question, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer matches the expected palmful amount, adds no contradictory info, directly answers the question, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q08",
+      "question": "What jewelry is allowed during clinical duties?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Allowed jewelry:**  \n- Only a plain‑band ring may be worn during clinical duties. All other jewelry (e.g., necklaces, bracelets, watches, decorative rings, earrings) should not be worn while providing direct patient care.  \n\n**Source:** Nail and Jewelry Guidance in the Hand Hygiene Protocol specifies that “Rings should be limited to a plain band during clinical duties” [1].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "Answer matches expected plain‑band restriction, directly addresses question, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"Answer matches expected plain‑band restriction, directly addresses question, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q09",
+      "question": "What are the rights of medication administration?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "infection_control.md"
+      ],
+      "answer": "**Rights of medication administration** (as defined in the medication‑administration safety reference):\n\n- Right patient  \n- Right drug  \n- Right dose  \n- Right route  \n- Right time  \n- Right documentation  \n- Right reason  \n\nSource: [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the expected list of rights and includes a citation.",
+        "raw": "{\n  \"faithfulness\": 5,\n  \"relevance\": 5,\n  \"citation_present\": 1,\n  \"reason\": \"The answer exactly matches the expected list of rights and includes a citation.\"\n}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q10",
+      "question": "How many identifiers are needed to verify a patient before medication administration?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "infection_control.md"
+      ],
+      "answer": "**Answer:** At least **two** patient identifiers (e.g., full name and date of birth) must be used to verify identity before giving medication【1】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer correctly states that at least two identifiers (full name and DOB) are required, matching the reference, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer correctly states that at least two identifiers (full name and DOB) are required, matching the reference, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q11",
+      "question": "What are examples of high-alert medications?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "answer": "**Examples of high‑alert medications** include:\n\n- **Insulins**  \n- **Anticoagulants** (e.g., heparin, direct oral anticoagulants)  \n- **Opioids and other sedatives**  \n- **Concentrated electrolytes** (e.g., potassium chloride, hypertonic saline)  \n- **Chemotherapy agents**  \n\nSource: [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer lists all expected high‑alert medication categories and includes a citation, matching the reference precisely.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer lists all expected high‑alert medication categories and includes a citation, matching the reference precisely.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q12",
+      "question": "What is the independent double-check procedure for high-alert medications?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "answer": "**Independent double‑check procedure for high‑alert medications**\n\n1. **Separate verification** – Two qualified clinicians each independently verify:\n   - The medication (drug name)  \n   - The concentration  \n   - The dose calculation  \n   - The route of administration  \n   - The infusion/administration rate (if applicable)  \n   - The correct patient (against the original order)\n\n2. **No sharing of conclusions** – Each clinician completes their check without discussing or seeing the other’s findings until both checks are finished.\n\n3. **Documentation** – After the double‑check, the medication is administered and documented per the standard medication administration documentation requirements.\n\n*Source: [1]*",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer includes all required verification elements and the no‑sharing rule, matching the reference; it adds a reasonable documentation step without contradicting the expected answer, and provides ",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer includes all required verification elements and the no‑sharing rule, matching the reference; it adds a reasonable documentation step without contradicting the expected answer, and provides a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q13",
+      "question": "When should you document medication administration?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "answer": "**Answer:**  \nDocument medication administration **immediately after giving the medication**; it should never be documented before the dose is administered. [1]",
+      "judge": {
+        "faithfulness": 3,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "Correctly states documentation should be immediate and not before, but omits expected details about recording dose, route, site, and time.",
+        "raw": "{\"faithfulness\": 3, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"Correctly states documentation should be immediate and not before, but omits expected details about recording dose, route, site, and time.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q14",
+      "question": "What should you do if a medication dose is missed?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "infection_control.md"
+      ],
+      "answer": "**Action for a missed medication dose**\n\n- Notify the prescriber according to your unit’s policy and document that you made the notification.  \n- Do **not** give a double dose later unless the prescriber specifically orders it.  \n\nSource: [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "Answer matches expected content exactly and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"Answer matches expected content exactly and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q15",
+      "question": "Can you rely on room number alone to identify a patient?",
+      "expected_doc": "med_admin_safety.md",
+      "retrieved_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "answer": "**No.** Patient identification must be confirmed with at least two identifiers (e.g., full name and date of birth); you should never rely solely on the room or bed number [1].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer correctly states 'No' and adds appropriate supporting detail without contradicting the expected answer, directly addresses the question, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer correctly states 'No' and adds appropriate supporting detail without contradicting the expected answer, directly addresses the question, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q16",
+      "question": "What should you do after removing gloves?",
+      "expected_doc": "hand_hygiene.md",
+      "retrieved_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**After you remove gloves, you should perform hand hygiene immediately.**  \n\n- The hand‑hygiene protocol states that “Perform hand hygiene immediately after glove removal”【1】.  \n- In the PPE doffing sequence, gloves are removed first, followed by other items, with “hand hygiene after each step where indicated and always at the end”【2】.  \n\nSo, after taking off gloves, clean your hands (using alcohol‑based hand rub or soap and water as appropriate) before proceeding with the rest of the doffing steps. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the expected response, stating hand hygiene should be performed immediately after glove removal, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer exactly matches the expected response, stating hand hygiene should be performed immediately after glove removal, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q17",
+      "question": "What PPE is required for contact precautions for MRSA?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Required PPE for Contact Precautions (e.g., MRSA):**  \n- **Gloves** – put on before entering the patient’s room and remove before exiting.  \n- **Gown** – wear a gown that fully covers the torso, donned before room entry and doffed before exit.  \n\nHand hygiene should be performed before donning and after removing PPE.  \n\n**Sources**: Contact‑precautions guidance lists gloves and gown as required PPE [1]; the PPE sequence reinforces donning gloves after the gown [2].",
+      "judge": {
+        "faithfulness": 3,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "Correctly lists gloves and gown, but omits the expected detail about dedicating non‑critical equipment, so only partially faithful; answer directly addresses the PPE question and includes citations.",
+        "raw": "{\"faithfulness\": 3, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"Correctly lists gloves and gown, but omits the expected detail about dedicating non‑critical equipment, so only partially faithful; answer directly addresses the PPE question and includes citations.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q18",
+      "question": "What mask is needed within 3 feet of a patient on droplet precautions for influenza?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Answer:** A **surgical mask** should be worn by staff when they are within 3 feet of a patient placed on droplet precautions for influenza【1】.  \n\n*Remember to follow your facility’s current infection‑control policies and any additional guidance from your infection‑prevention team.* [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer correctly states 'surgical mask' matching the expected answer, directly addresses the question, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer correctly states 'surgical mask' matching the expected answer, directly addresses the question, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q19",
+      "question": "What type of room is needed for airborne precautions for tuberculosis?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Answer:**  \nPatients on airborne precautions for tuberculosis should be placed in an **airborne infection isolation room (AIIR) that provides negative‑pressure ventilation**【1】. [1]",
+      "judge": {
+        "faithfulness": 0,
+        "relevance": 0,
+        "citation_present": 0,
+        "reason": "no json",
+        "raw": ""
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q20",
+      "question": "What is the correct donning sequence for PPE?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Donning (putting on) PPE sequence**\n\n1. Perform hand hygiene.  \n2. Put on a gown that fully covers the torso and tie it at the neck and waist.  \n3. Apply a mask or respirator, secure the ties, and (for N95 respirators) perform a seal check.  \n4. Add goggles or a face shield.  \n5. Don gloves, extending them over the gown cuffs.  \n\n**Sources:** [1] Personal Protective Equipment Sequence – Donning; [2] Personal Protective Equipment Sequence – Donning.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the expected sequence and includes citation markers.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer exactly matches the expected sequence and includes citation markers.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q21",
+      "question": "What is the doffing sequence after caring for an isolated patient?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Doffing (removing) sequence**\n\n1. **Gloves** – grasp the outside surface, peel off, and discard.  \n2. **Goggles/face shield** – handle by the headband and remove.  \n3. **Gown** – peel off, turn inside‑out, and discard.  \n4. **Mask/respirator** – avoid touching the front; remove by releasing the ties.  \n5. **Hand hygiene** – perform hand hygiene after each step where indicated and always at the end.  \n\n*Source: excerpt [2].*  \n\n*Remember to follow your facility’s specific infection‑control policies and use proper hand hygiene throughout the process.*",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the expected doffing sequence and includes a citation.",
+        "raw": "{\n  \"faithfulness\": 5,\n  \"relevance\": 5,\n  \"citation_present\": 1,\n  \"reason\": \"The answer exactly matches the expected doffing sequence and includes a citation.\"\n}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q22",
+      "question": "What disinfectant is needed for C. difficile environmental cleaning?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Answer:**  \nUse a **sporicidal disinfectant**—for example, a bleach‑based agent that is EPA‑registered and effective against *Clostridioides difficile* spores【1】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer correctly states a sporicidal, bleach‑based disinfectant as required, matching the reference, and includes a citation.",
+        "raw": "{\n  \"faithfulness\": 5,\n  \"relevance\": 5,\n  \"citation_present\": 1,\n  \"reason\": \"The answer correctly states a sporicidal, bleach‑based disinfectant as required, matching the reference, and includes a citation.\"\n}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q23",
+      "question": "When should soap and water be used instead of alcohol rub for a patient on contact precautions?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Answer:**  \nUse soap and water (instead of an alcohol‑based hand rub) when you are caring for patients on contact precautions for **Clostridioides difficile or norovirus** because the spores are not reliably killed by alcohol [1]. Additionally, soap and water should be used whenever hands are visibly soiled [2].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer correctly states C. difficile and norovirus as the situations, matching the reference, and adds a relevant extra point without contradicting; citations are present.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer correctly states C. difficile and norovirus as the situations, matching the reference, and adds a relevant extra point without contradicting; citations are present.\"}"
+      },
+      "has_citation": 1
+    },
+    {
+      "id": "q24",
+      "question": "How should patient placement be handled when single rooms are unavailable?",
+      "expected_doc": "infection_control.md",
+      "retrieved_titles": [
+        "infection_control.md",
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "answer": "**Answer:**  \nWhen a single room cannot be provided, patients requiring transmission‑based precautions should be **cohorted with other patients who have the same infection**, while ensuring **spatial separation** between cohorts and, when feasible, assigning **dedicated staff** to care for them【1】. [1]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "citation_present": 1,
+        "reason": "The answer exactly matches the reference, covering cohorting, spatial separation, and dedicated staffing, and includes a citation.",
+        "raw": "{\"faithfulness\": 5, \"relevance\": 5, \"citation_present\": 1, \"reason\": \"The answer exactly matches the reference, covering cohorting, spatial separation, and dedicated staffing, and includes a citation.\"}"
+      },
+      "has_citation": 1
+    }
+  ]
+}

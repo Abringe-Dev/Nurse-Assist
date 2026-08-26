@@ -1,0 +1,520 @@
+{
+  "k": 5,
+  "count": 24,
+  "dense": {
+    "hit_at_k": 1.0,
+    "mrr": 0.979,
+    "ndcg": 0.985
+  },
+  "hybrid": {
+    "hit_at_k": 1.0,
+    "mrr": 0.979,
+    "ndcg": 0.985
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "question": "How long should you rub hands with alcohol-based hand rub?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q02",
+      "question": "How long does handwashing with soap and water take?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q03",
+      "question": "What are the five moments for hand hygiene?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q04",
+      "question": "When should you use soap and water instead of alcohol-based hand rub?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 0.5,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 0.6309297535714575
+    },
+    {
+      "id": "q05",
+      "question": "What is the guidance for fingernails for clinical staff?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q06",
+      "question": "Does wearing gloves replace the need for hand hygiene?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q07",
+      "question": "How much alcohol-based hand rub should be applied?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q08",
+      "question": "What jewelry is allowed during clinical duties?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q09",
+      "question": "What are the rights of medication administration?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "hand_hygiene.md",
+        "infection_control.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q10",
+      "question": "How many identifiers are needed to verify a patient before medication administration?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q11",
+      "question": "What are examples of high-alert medications?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q12",
+      "question": "What is the independent double-check procedure for high-alert medications?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q13",
+      "question": "When should you document medication administration?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q14",
+      "question": "What should you do if a medication dose is missed?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q15",
+      "question": "Can you rely on room number alone to identify a patient?",
+      "expected": "med_admin_safety.md",
+      "dense_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "med_admin_safety.md",
+        "infection_control.md",
+        "hand_hygiene.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q16",
+      "question": "What should you do after removing gloves?",
+      "expected": "hand_hygiene.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q17",
+      "question": "What PPE is required for contact precautions for MRSA?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q18",
+      "question": "What mask is needed within 3 feet of a patient on droplet precautions for influenza?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q19",
+      "question": "What type of room is needed for airborne precautions for tuberculosis?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "med_admin_safety.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q20",
+      "question": "What is the correct donning sequence for PPE?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q21",
+      "question": "What is the doffing sequence after caring for an isolated patient?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "med_admin_safety.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q22",
+      "question": "What disinfectant is needed for C. difficile environmental cleaning?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q23",
+      "question": "When should soap and water be used instead of alcohol rub for a patient on contact precautions?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "hand_hygiene.md",
+        "infection_control.md",
+        "med_admin_safety.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 0.5,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 0.6309297535714575,
+      "hybrid_ndcg": 1.0
+    },
+    {
+      "id": "q24",
+      "question": "How should patient placement be handled when single rooms are unavailable?",
+      "expected": "infection_control.md",
+      "dense_titles": [
+        "infection_control.md",
+        "med_admin_safety.md",
+        "hand_hygiene.md"
+      ],
+      "hybrid_titles": [
+        "infection_control.md",
+        "hand_hygiene.md",
+        "med_admin_safety.md"
+      ],
+      "dense_hit": 1,
+      "hybrid_hit": 1,
+      "dense_mrr": 1.0,
+      "hybrid_mrr": 1.0,
+      "dense_ndcg": 1.0,
+      "hybrid_ndcg": 1.0
+    }
+  ]
+}
