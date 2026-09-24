@@ -83,6 +83,7 @@ export const api = {
     let buffer = ''
     let sessionIdOut = sessionId
     let sourcesOut = []
+    let isGeneralOut = false
     while (true) {
       const { done, value } = await reader.read()
       if (done) break
@@ -97,12 +98,13 @@ export const api = {
         if (payload.done) {
           sessionIdOut = payload.session_id ?? sessionIdOut
           sourcesOut = payload.sources ?? []
-          handlers.onDone({ sessionId: sessionIdOut, sources: sourcesOut })
+          isGeneralOut = payload.is_general ?? false
+          handlers.onDone({ sessionId: sessionIdOut, sources: sourcesOut, isGeneral: isGeneralOut })
         }
         if (payload.error) handlers.onError(payload.error)
       }
     }
-    return { sessionId: sessionIdOut, sources: sourcesOut }
+    return { sessionId: sessionIdOut, sources: sourcesOut, isGeneral: isGeneralOut }
   },
 
   async listSessions() {

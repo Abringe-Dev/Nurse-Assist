@@ -4,11 +4,26 @@ import ChatWindow from './components/ChatWindow.jsx'
 import DocumentList from './components/DocumentList.jsx'
 import DocumentUploader from './components/DocumentUploader.jsx'
 import SessionSidebar from './components/SessionSidebar.jsx'
+import { BookIcon, ShieldIcon, SignOutIcon } from './components/icons.jsx'
 import { useAuth } from './context/AuthContext.jsx'
 
 const GREETING = {
   role: 'assistant',
-  text: "Hi! I'm NurseAssist. Upload your clinical reference documents, then ask about any protocol, drug, or procedure — I'll answer using only what's in them, with cited sources.",
+  text: 'Upload a protocol for cited answers — or just ask, and I’ll tell you when I’m answering from general knowledge.',
+}
+
+const SAMPLE_PROMPTS = [
+  'How long should you rub hands with alcohol-based hand rub?',
+  'What are the five moments for hand hygiene?',
+  'What is the independent double-check for high-alert medications?',
+]
+
+function BrandMark() {
+  return (
+    <span className="flex size-9 items-center justify-center rounded-xl bg-verified text-sheet shadow-[0_2px_10px_rgba(11,107,98,0.35),0_1px_2px_rgba(22,34,46,0.2)]">
+      <BookIcon className="size-5" />
+    </span>
+  )
 }
 
 export default function App() {
@@ -19,12 +34,16 @@ export default function App() {
   const [messages, setMessages] = useState([GREETING])
   const [uploading, setUploading] = useState(false)
   const [thinking, setThinking] = useState(false)
+  const [backendDown, setBackendDown] = useState(false)
 
   useEffect(() => {
     api
       .listDocuments()
-      .then(setDocuments)
-      .catch(() => {})
+      .then((docs) => {
+        setDocuments(docs)
+        setBackendDown(false)
+      })
+      .catch(() => setBackendDown(true))
     api
       .listSessions()
       .then(setSessions)
@@ -49,6 +68,7 @@ export default function App() {
             role: m.role,
             text: m.content,
             sources: m.sources ?? undefined,
+            isGeneral: (m.sources == null || m.sources.length === 0) && m.role === 'assistant' && !m.content.includes('There are no reference documents'),
             isError: false,
           })),
         )
@@ -79,6 +99,7 @@ export default function App() {
     try {
       await api.uploadDocument(file)
       setDocuments(await api.listDocuments())
+      setBackendDown(false)
     } catch (err) {
       setMessages((prev) => [
         ...prev,
@@ -108,6 +129,7 @@ export default function App() {
     setMessages((prev) => [...prev, { role: 'assistant', text: '' }])
     let streamed = ''
     let finalSources = []
+    let isGeneral = false
     // eslint-disable-next-line no-useless-assignment
     let sid = null
     try {
@@ -120,16 +142,19 @@ export default function App() {
             return copy
           })
         },
-        onDone() {},
+        onDone({ isGeneral: general }) {
+          isGeneral = general ?? false
+        },
         onError(err) {
           throw new Error(err)
         },
       })
       sid = result.sessionId
       finalSources = result.sources
+      isGeneral = result.isGeneral ?? isGeneral
       setMessages((prev) => {
         const copy = [...prev]
-        copy[assistantIndex] = { role: 'assistant', text: streamed, sources: finalSources }
+        copy[assistantIndex] = { role: 'assistant', text: streamed, sources: finalSources, isGeneral }
         return copy
       })
       if (!activeSessionId && sid) {
@@ -140,10 +165,10 @@ export default function App() {
       }
     } catch (err) {
       try {
-        const { answer, sources, session_id } = await api.sendMessage(text, activeSessionId)
+        const { answer, sources, session_id, is_general } = await api.sendMessage(text, activeSessionId)
         setMessages((prev) => {
           const copy = [...prev]
-          copy[assistantIndex] = { role: 'assistant', text: answer, sources }
+          copy[assistantIndex] = { role: 'assistant', text: answer, sources, isGeneral: is_general ?? false }
           return copy
         })
         if (!activeSessionId && session_id) {
@@ -168,65 +193,105 @@ export default function App() {
     }
   }
 
+  const showHero = messages.length <= 1 && !activeSessionId && !thinking
+
   return (
-    <div className="flex h-screen flex-col bg-slate-100 md:flex-row">
-      <aside className="flex max-h-64 w-full shrink-0 flex-col gap-3 border-b border-slate-200 bg-slate-50 p-4 md:max-h-none md:w-72 md:border-b-0 md:border-r">
+    <div className="flex h-screen flex-col bg-paper text-ink md:flex-row">
+      <aside className="sheet-scroll flex max-h-72 w-full shrink-0 flex-col gap-5 overflow-y-auto border-b border-rule bg-side p-5 md:max-h-none md:w-[300px] md:overflow-y-auto md:border-b-0 md:border-r">
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-teal-600 text-sm font-bold text-white">
-              N
-            </span>
+          <div className="flex items-center gap-2.5">
+            <BrandMark />
             <div>
-              <p className="text-sm font-semibold text-slate-900">NurseAssist</p>
-              <p className="text-[11px] text-slate-500">Clinical Reference RAG</p>
+              <p className="text-[15px] font-semibold leading-tight">NurseAssist</p>
+              <p className="tnum text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+                Handover desk
+              </p>
             </div>
           </div>
           {authEnabled && user && (
             <button
               type="button"
               onClick={signOut}
-              className="rounded-md px-2 py-1 text-xs text-slate-500 hover:bg-slate-200"
+              aria-label="Sign out"
+              className="rounded-lg p-2 text-ink-faint transition-colors hover:bg-rule-soft hover:text-ink"
             >
-              Sign out
+              <SignOutIcon className="size-4" />
             </button>
           )}
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto">
-          <SessionSidebar
-            sessions={sessions}
-            activeId={activeSessionId}
-            onSelect={handleSelectSession}
-            onCreate={handleCreateSession}
-            onDelete={handleDeleteSession}
-          />
-        </div>
+        <section aria-label="Chats" className="flex min-h-0 flex-col">
+          <p className="tnum mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-faint">
+            Handover chats
+          </p>
+          <div className="min-h-0 flex-1">
+            <SessionSidebar
+              sessions={sessions}
+              activeId={activeSessionId}
+              onSelect={handleSelectSession}
+              onCreate={handleCreateSession}
+              onDelete={handleDeleteSession}
+            />
+          </div>
+        </section>
 
-        <DocumentUploader onUpload={handleUpload} uploading={uploading} />
+        <section aria-label="Library" className="flex min-h-0 flex-col">
+          <p className="tnum mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-faint">
+            Protocol library
+          </p>
+          <DocumentUploader onUpload={handleUpload} uploading={uploading} />
+          <div className="sheet-scroll mt-3 min-h-0 max-h-44 overflow-y-auto">
+            <DocumentList documents={documents} onDelete={handleDelete} />
+          </div>
+        </section>
 
-        <div className="min-h-0 max-h-32 overflow-y-auto">
-          <DocumentList documents={documents} onDelete={handleDelete} />
-        </div>
-
-        <p className="text-[10px] leading-snug text-slate-400">
+        <p className="mt-auto text-[11px] leading-snug text-ink-faint">
           Reference lookup only. Always follow institutional protocols and clinical judgment.
         </p>
       </aside>
 
       <main className="flex min-h-0 min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-3">
-          <h1 className="text-sm font-semibold text-slate-900">Clinical Reference Assistant</h1>
-          <span className="rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700 ring-1 ring-teal-200">
-            {documents.length} document{documents.length === 1 ? '' : 's'} indexed
+        <header className="flex items-center justify-between gap-3 border-b border-rule bg-sheet px-5 py-3 md:px-8">
+          <h1 className="font-display text-lg leading-tight md:text-xl">
+            Clinical Reference Assistant
+          </h1>
+          <span
+            className={`tnum inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] ${
+              backendDown
+                ? 'bg-danger-wash text-danger'
+                : documents.length === 0
+                  ? 'bg-caution-wash text-caution-ink'
+                  : 'bg-verified-wash text-verified-deep'
+            }`}
+          >
+            <span
+              className={`size-1.5 rounded-full ${
+                backendDown ? 'bg-danger' : documents.length === 0 ? 'bg-caution-ink' : 'bg-verified'
+              }`}
+            />
+            {backendDown
+              ? 'Backend offline'
+              : `${documents.length} doc${documents.length === 1 ? '' : 's'} on file`}
           </span>
         </header>
 
-        <div className="bg-amber-50 px-6 py-1.5 text-center text-[11px] text-amber-800">
-          Answers are generated from uploaded documents and may contain errors. Not medical advice.
+        <div className="flex items-center justify-center gap-2 bg-caution-wash px-5 py-1.5 text-center text-[11px] leading-snug text-caution-ink">
+          <ShieldIcon className="size-3.5 shrink-0" />
+          <span>
+            {documents.length === 0
+              ? 'No protocols on file — answers are general knowledge until you add one. Not medical advice.'
+              : 'Answers are grounded in your uploaded protocols and may contain errors. Not medical advice.'}
+          </span>
         </div>
 
         <div className="min-h-0 flex-1">
-          <ChatWindow messages={messages} thinking={thinking} onSend={handleSend} />
+          <ChatWindow
+            messages={messages}
+            thinking={thinking}
+            onSend={handleSend}
+            showHero={showHero}
+            heroPrompts={SAMPLE_PROMPTS}
+          />
         </div>
       </main>
     </div>

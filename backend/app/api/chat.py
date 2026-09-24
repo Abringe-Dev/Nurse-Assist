@@ -9,7 +9,8 @@ from sqlalchemy.orm import Session
 from app.core.security import get_current_user
 from app.db.database import SessionLocal, get_db
 from app.db.models import ChatSession, Message, User
-from app.rag.chain import generate_answer, stream_answer
+from app.core.config import get_settings
+from app.rag.chain import generate_answer, generate_general_answer, stream_answer, stream_general_answer
 from app.rag.guardrails import REFUSAL_MESSAGE, classify_query
 from app.rag.retriever import retrieve
 from app.schemas.chat import ChatRequest, ChatResponse
@@ -56,9 +57,19 @@ def send_message(
     db.add(Message(session_id=session_id, role="user", content=payload.message))
 
     retrieved = retrieve(payload.message, user_id=user.id)
+    is_general = False
     if not retrieved:
-        answer = NO_CONTEXT_ANSWER
-        sources: list = []
+        if not get_settings().enable_general_fallback:
+            answer = NO_CONTEXT_ANSWER
+            sources: list = []
+        else:
+            try:
+                answer = generate_general_answer(payload.message)
+            except RuntimeError as exc:
+                db.rollback()
+                raise HTTPException(status_code=503, detail=str(exc)) from exc
+            sources: list = []
+            is_general = True
     else:
         try:
             answer, sources = generate_answer(payload.message, retrieved)
@@ -72,7 +83,7 @@ def send_message(
     if session.title == "New chat" and len(payload.message.strip()) > 0:
         session.title = payload.message.strip()[:60]
     db.commit()
-    return ChatResponse(answer=answer, sources=sources, session_id=session_id)
+    return ChatResponse(answer=answer, sources=sources, session_id=session_id, is_general=is_general)
 
 
 @router.post("/stream")
@@ -91,7 +102,7 @@ def stream_message(
 
         def refusal_gen():
             yield f"data: {json.dumps({'token': refusal_text})}\n\n"
-            yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': []})}\n\n"
+            yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': [], 'is_general': False})}\n\n"
 
         return StreamingResponse(refusal_gen(), media_type="text/event-stream")
 
@@ -101,23 +112,47 @@ def stream_message(
 
     retrieved = retrieve(payload.message, user_id=user.id)
     if not retrieved:
-        answer = NO_CONTEXT_ANSWER
-        sources: list = []
+        if not get_settings().enable_general_fallback:
+            answer = NO_CONTEXT_ANSWER
 
-        def no_ctx_gen():
+            def no_ctx_gen():
+                db2 = SessionLocal()
+                try:
+                    db2.add(Message(session_id=session_id, role="assistant", content=answer, sources_json=None))
+                    sess = db2.get(ChatSession, session_id)
+                    if sess:
+                        sess.updated_at = datetime.now(timezone.utc)
+                    db2.commit()
+                finally:
+                    db2.close()
+                yield f"data: {json.dumps({'token': answer})}\n\n"
+                yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': [], 'is_general': False})}\n\n"
+
+            return StreamingResponse(no_ctx_gen(), media_type="text/event-stream")
+
+        def general_gen():
+            full_answer = ""
+            try:
+                for chunk in stream_general_answer(payload.message):
+                    full_answer += chunk
+                    yield f"data: {json.dumps({'token': chunk})}\n\n"
+            except Exception as exc:
+                yield f"data: {json.dumps({'error': str(exc)})}\n\n"
+                return
             db2 = SessionLocal()
             try:
-                db2.add(Message(session_id=session_id, role="assistant", content=answer, sources_json=None))
+                db2.add(Message(session_id=session_id, role="assistant", content=full_answer, sources_json=None))
                 sess = db2.get(ChatSession, session_id)
                 if sess:
                     sess.updated_at = datetime.now(timezone.utc)
+                    if sess.title == "New chat":
+                        sess.title = payload.message.strip()[:60]
                 db2.commit()
             finally:
                 db2.close()
-            yield f"data: {json.dumps({'token': answer})}\n\n"
-            yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': []})}\n\n"
+            yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': [], 'is_general': True})}\n\n"
 
-        return StreamingResponse(no_ctx_gen(), media_type="text/event-stream")
+        return StreamingResponse(general_gen(), media_type="text/event-stream")
 
     try:
         _, preview_sources = generate_answer(payload.message, retrieved)
@@ -156,6 +191,6 @@ def stream_message(
             db2.commit()
         finally:
             db2.close()
-        yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': sources_payload})}\n\n"
+        yield f"data: {json.dumps({'done': True, 'session_id': session_id, 'sources': sources_payload, 'is_general': False})}\n\n"
 
     return StreamingResponse(event_gen(), media_type="text/event-stream")

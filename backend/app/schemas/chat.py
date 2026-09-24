@@ -24,3 +24,4 @@ class ChatResponse(BaseModel):
     answer: str
     sources: list[SourceInfo]
     session_id: str | None = None
+    is_general: bool = False

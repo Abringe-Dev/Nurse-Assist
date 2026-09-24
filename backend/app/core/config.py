@@ -20,6 +20,7 @@ class Settings(BaseSettings):
 
     top_k: int = 5
     reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    enable_general_fallback: bool = True
 
     database_url: str = ""
     supabase_url: str = ""

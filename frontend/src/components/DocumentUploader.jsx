@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { CheckIcon, UploadIcon } from './icons.jsx'
 
 const ACCEPT = '.pdf,.txt,.md'
 
@@ -15,6 +16,7 @@ export default function DocumentUploader({ onUpload, uploading }) {
     <div
       role="button"
       tabIndex={0}
+      aria-label="Upload a reference document"
       onClick={() => inputRef.current?.click()}
       onKeyDown={(e) => e.key === 'Enter' && inputRef.current?.click()}
       onDragOver={(e) => {
@@ -28,9 +30,11 @@ export default function DocumentUploader({ onUpload, uploading }) {
         handleFiles(e.dataTransfer.files)
       }}
       className={`cursor-pointer rounded-xl border-2 border-dashed p-4 text-center transition-colors ${
-        dragging
-          ? 'border-teal-500 bg-teal-50'
-          : 'border-slate-300 hover:border-teal-400 hover:bg-slate-50'
+        uploading
+          ? 'border-verified bg-verified-wash'
+          : dragging
+            ? 'border-verified bg-verified-wash'
+            : 'border-rule bg-sheet hover:border-verified'
       }`}
     >
       <input
@@ -43,10 +47,29 @@ export default function DocumentUploader({ onUpload, uploading }) {
           e.target.value = ''
         }}
       />
-      <p className="text-sm font-medium text-slate-700">
-        {uploading ? 'Ingesting document…' : 'Upload a reference document'}
+      <span
+        className={`mx-auto flex size-9 items-center justify-center rounded-full ${
+          uploading || dragging ? 'bg-verified text-sheet' : 'bg-rule-soft text-verified-deep'
+        }`}
+      >
+        {uploading ? (
+          <span className="pulse-dot size-2.5 rounded-full bg-current" />
+        ) : (
+          <UploadIcon className="size-4" />
+        )}
+      </span>
+      <p className="mt-2 text-[13px] font-semibold">
+        {uploading ? 'Indexing document…' : 'File a reference document'}
       </p>
-      <p className="mt-1 text-xs text-slate-500">PDF, TXT or MD · drop or click</p>
+      <p className="mt-0.5 text-[11px] text-ink-faint">
+        {uploading ? (
+          <span className="inline-flex items-center gap-1">
+            <CheckIcon className="size-3" /> Chunking, embedding, filing
+          </span>
+        ) : (
+          'PDF, TXT or MD · drop or click'
+        )}
+      </p>
     </div>
   )
 }
